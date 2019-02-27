@@ -1,0 +1,42 @@
+package tn.org.wevioo.tc.demo.app.client.gui;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class UntitledTestCase {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized");
+		WebDriver driver = new ChromeDriver(options);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		driver.get(
+				"https://www.google.com/search?q=google&rlz=1C1CHBD_frTN838TN838&oq=google&aqs=chrome..69i57j69i60l4j0.1312j1j4&sourceid=chrome&ie=UTF-8");
+		driver.findElement(
+				By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Collections'])[1]/following::div[18]"))
+				.click();
+		driver.findElement(
+				By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Collections'])[1]/following::div[18]"))
+				.click();
+		driver.findElement(By.name("q")).click();
+		// ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=q |
+		// ]]
+		driver.findElement(By.name("q")).clear();
+		driver.findElement(By.name("q")).sendKeys("seleni");
+		driver.findElement(By.name("q")).sendKeys(Keys.DOWN);
+		driver.findElement(By.name("q")).sendKeys(Keys.DOWN);
+		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+		driver.findElement(
+				By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Jan 21, 2019'])[1]/following::h3[1]"))
+				.click();
+
+	}
+
+}
